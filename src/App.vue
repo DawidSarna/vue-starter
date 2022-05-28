@@ -13,7 +13,9 @@
 
 <h1>Witaj w systemie do zapisów na zajęcia</h1>
 <div v-if="!email">
-<login-form @login="logMeIn($event)"></login-form>
+<login-form @login="logMeIn($event)" button-label="wejdź"></login-form>
+<login-form @login="logMeIn($event)" button-label="wleć"></login-form>
+<login-form @login="logMeIn($event)" :button-label="Math.random() < 0.5 ? 'Etykieta A' : 'Etykieta B'"></login-form>
 </div>
 
 <!--
