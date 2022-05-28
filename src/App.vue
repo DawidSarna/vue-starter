@@ -12,10 +12,17 @@
 -->
 
 <h1>Witaj w systemie do zapisów na zajęcia</h1>
+<div v-if="!email">
+<login-form @login="logMeIn($event)"></login-form>
+</div>
+
+<!--
 <div v-if="!loggedIn">Zaloguj się e-mailem 
 <input type="email" v-model="email" @keyup.enter="enterMyEmail()">
 <button @click="enterMyEmail()">Wchodzę</button>
 </div>
+-->
+
 <div v-else>
 	<h3>Witaj {{ email }}</h3>
 	<button @click="logout()">Wyloguj</button>
@@ -25,7 +32,11 @@
 </template>
 
 <script>
+import "milligram";
+import LoginForm from "./LoginForm";
+
 export default {
+components: {LoginForm},
 data() {
 	return {
 		email: '',
@@ -40,6 +51,10 @@ data() {
   
   enterMyEmail() {
     this.loggedIn = true;
+  },
+  
+    logMeIn(username) {
+	this.email = username;
   },
   
   logout() {
