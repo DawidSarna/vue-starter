@@ -26,8 +26,11 @@
 -->
 
 <div v-else>
+<logout-form @logout="logMeOut($event)" :email="email"></logout-form>
+<!--
 	<h3>Witaj {{ email }}</h3>
 	<button @click="logout()">Wyloguj</button>
+	-->
 </div>
 
   </div>
@@ -36,9 +39,11 @@
 <script>
 import "milligram";
 import LoginForm from "./LoginForm";
+import LogoutForm from "./LogoutForm";
+
 
 export default {
-components: {LoginForm},
+components: {LoginForm, LogoutForm},
 data() {
 	return {
 		email: '',
@@ -56,6 +61,10 @@ data() {
   },
   
     logMeIn(username) {
+	this.email = username;
+  },
+  
+   logMeOut(username) {
 	this.email = username;
   },
   
